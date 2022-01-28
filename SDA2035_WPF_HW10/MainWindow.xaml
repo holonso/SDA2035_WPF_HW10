@@ -1,0 +1,43 @@
+﻿<Window x:Class="SDA2035_WPF_HW10.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SDA2035_WPF_HW10"
+        mc:Ignorable="d"
+        Title="BeaconTowerReflection" Height="700" Width="600" Background="#FFDBD8FF"
+        ResizeMode="NoResize">
+    <StackPanel>
+        <Border BorderBrush="White" BorderThickness="5"
+                HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="img_beacon" >
+            <Image Source="Images/Beacon.jpg" Width="250" Height="380" />
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Direction="40" ShadowDepth="20" Opacity="0.5"/>
+            </Border.Effect>
+            <Border.RenderTransform>
+                <SkewTransform CenterX="-100" CenterY="100" 
+                               AngleX="0" AngleY="10"/>
+            </Border.RenderTransform>
+        </Border>
+        <Border Height="380">
+            <Border.Background>
+                <VisualBrush Visual="{Binding ElementName=img_beacon}">
+                    <VisualBrush.Transform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.43" ScaleY="-1" CenterX="10" CenterY="200"/>
+                            <SkewTransform CenterX="100" CenterY="110" 
+                               AngleX="-30" AngleY="20"/>
+                            <TranslateTransform X="128"/>
+                        </TransformGroup>
+                    </VisualBrush.Transform>
+                </VisualBrush>
+            </Border.Background>
+            <Border.OpacityMask>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="Black"/>
+                    <GradientStop Offset="0.7" Color="Transparent"/>
+                </LinearGradientBrush>
+            </Border.OpacityMask>
+        </Border>
+    </StackPanel>
+</Window>
